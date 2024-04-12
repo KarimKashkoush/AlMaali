@@ -8,6 +8,7 @@ function Form() {
         let sel = document.getElementById("national");
         if (sel.value === "مقيم") {
             document.getElementById("other").style.display = "block"
+            console.log(document.getElementById("date").value)
         } else {
             document.getElementById("other").style.display = "none"
         }
@@ -44,7 +45,7 @@ function Form() {
 
                     <section className="date">
                         <label htmlFor="date">تاريخ ميلاد</label>
-                        <input type="date" id='date' />
+                        <input type="date" id='date' value={"2015-04-10"}/>
                     </section>
 
                     <section className="national-id">
@@ -66,7 +67,7 @@ function Form() {
 
                     <section className="date">
                         <label htmlFor="dateFa">تاريخ ميلاد </label>
-                        <input type="date" id='dateFa' />
+                        <input type="date" id='dateFa' value={"1990-11-11"}/>
                     </section>
 
                     <section className="national">
