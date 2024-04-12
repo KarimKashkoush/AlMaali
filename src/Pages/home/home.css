@@ -1,0 +1,185 @@
+.home {
+    position: relative;
+}
+
+.home .container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-block: 50px;
+    background-image: url(../../../public/image/bg.svg);
+}
+
+.home .container .image img {
+    max-width: 300px;
+}
+
+.home .container button a {
+    color: var(--main-text);
+    font-size: 18px;
+    font-weight: 700px;
+    transition: 0.4s;
+}
+
+.home .container button {
+    position: relative;
+    transition: 0.3s;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.home .container button::before {
+    content: "";
+    background-color: var(--border);
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: 0.3s;
+}
+
+.home .container button:hover::before {
+    right: 0;
+}
+
+.home .container button:hover a {
+    color: #fff;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg .icon-bg {
+    position: absolute;
+    opacity: 0.4;
+}
+
+.bgpen1 {
+    top: 5%;
+    left: 95%;
+}
+
+.bgbook1 {
+    top: 3%;
+    left: 80%
+}
+
+.bgpen2 {
+    top: 10%;
+    left: 25%;
+}
+
+.bgbook2 {
+    top: 20%;
+    left: 70%;
+}
+
+.bgpen3 {
+    top: 25%;
+    left: 75%;
+}
+
+.bgbook3 {
+    top: 30%;
+    left: 25%;
+}
+
+.bgpen4 {
+    top: 35%;
+    left: 80%;
+}
+
+.bgbook4 {
+    top: 40%;
+    left: 30%;
+}
+
+.bgpen5 {
+    top: 45%;
+    left: 60%;
+}
+
+.bgbook5 {
+    top: 50%;
+    left: 72%;
+}
+
+.bgpen6 {
+    top: 55%;
+    left: 90%;
+}
+
+.bgbook6 {
+    top: 60%;
+    left: 62%;
+}
+
+.bgpen7 {
+    top: 65%;
+    left: 30%;
+}
+
+.bgbook7 {
+    top: 70%;
+    left: 15%;
+}
+
+.bgpen8 {
+    top: 75%;
+    left: 98%;
+}   
+
+.bgbook8 {
+    top: 80%;
+    left: 70%;
+}
+
+.bgpen9 {
+    top: 85%;
+    left: 26%;
+}
+
+.bgbook9 {
+    top: 90%;
+    left: 40%;
+}
+
+.bgpen10 {
+    top: 95%;
+    left: 95%;
+}
+
+.bgbook10 {
+    top: 100%;
+    left: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
