@@ -21,7 +21,12 @@ a {
 }
 
 html,
-a {
+a,
+label,
+input,
+input::placeholder,
+select,
+button {
   font-family: "Cairo", sans-serif;
   scroll-behavior: smooth;
 }
@@ -76,4 +81,5 @@ button {
   color: var(--main-text);
   cursor: pointer;
   background-color: #fff;
+  font-size: 18px;
 }
