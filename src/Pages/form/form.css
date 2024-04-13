@@ -85,10 +85,10 @@
     color: rgb(177, 3, 3);
 }
 
-.succes {
+.form .container form .succes {
     border: 2px solid #0086cf;
 }
 
-.error {
+.form .container form .error {
     border: 2px solid rgb(177, 3, 3);
 }
