@@ -46,6 +46,7 @@
 #dateStd {
     max-width: 450px;
 }
+
 .form .container form button {
     margin-top: 35px;
     width: 100%;
@@ -78,4 +79,16 @@
 .other {
     display: none;
     margin-top: 10px;
+}
+
+.errorma {
+    color: rgb(177, 3, 3);
+}
+
+.succes {
+    border: 2px solid #0086cf;
+}
+
+.error {
+    border: 2px solid rgb(177, 3, 3);
 }

@@ -3,15 +3,19 @@ import './form.css'
 import { useState, useEffect } from 'react';
 
 function Form() {
+    const [formData, setFormData] = useState({
+        studentName: '',
+    });
 
-    function open() {
-        if(document.getElementById('nationalFa').value === "مقيم") {
-            document.getElementById("other").style.display = "block"
-        } else {
-            document.getElementById("other").style.display = "none"
-        }
-    }
+    const [errors, setErrors] = useState({});
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwIOafGNb08HrIshQqCr7br80BDXMIN3nZm8jHFF4mFgwEPx0ANJntsfWJFNYqGEh9YCw/exec'
 
@@ -19,7 +23,44 @@ function Form() {
 
     function submit(e) {
         e.preventDefault()
+        const validationErrors = validateFormData(formData);
+        if (Object.keys(validationErrors).length === 0) {
+            // 
+        } else {
+            setErrors(validationErrors);
+        }
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    }
+
+    const validateFormData = (data) => {
+        const errors = {};
+        if (data.studentName.trim() == "") {
+            errors.studentName = 'اسم الطالب مطلوب';
+        } else if (data.studentName.trim().length < 6) {
+            errors.studentName = "يرجي ادخال اسم الطالب رباعي وبشكل صحيح"
+        } else {
+            errors.studentName = ""
+        }
+        return errors;
+    };
+
+
+
+
+
+
+
+
+
+
+
+    // /==========================================================/ //
+    function open() {
+        if (document.getElementById('nationalFa').value === "مقيم") {
+            document.getElementById("other").style.display = "block"
+        } else {
+            document.getElementById("other").style.display = "none"
+        }
     }
 
 
@@ -29,7 +70,7 @@ function Form() {
     return (
         <section className="form" >
             <section className="container">
-                <form name='contact-form' onSubmit={(e)=>{submit(e)}}>
+                <form name='contact-form' onSubmit={(e) => { submit(e) }}>
                     <h1 className='form-section-title'>المعلومات الدراسية</h1>
                     <section>
                         <label htmlFor="semester">السنة الدراسية المراد التسجيل بها للعام الدراسي الجديد 2024 - 2025</label>
@@ -53,12 +94,13 @@ function Form() {
 
                     <section className="name">
                         <label htmlFor="nameStd">اسم الطالب</label>
-                        <input type="text" id='nameStd' name='student-name' />
+                        <input type="text" id='nameStd' name='studentName' onChange={handleChange} />
+                        {errors.studentName && <div className="errorma">{errors.studentName}</div>}
                     </section>
 
                     <section className="date">
                         <label htmlFor="dateStd">تاريخ ميلاد</label>
-                        <input type="date" id='dateStd' name='Student-date-of-birth'/>
+                        <input type="date" id='dateStd' name='Student-date-of-birth' />
                     </section>
 
                     <section className="national-id">
@@ -75,7 +117,7 @@ function Form() {
 
                     <section className="date">
                         <label htmlFor="dateFa">تاريخ ميلاد </label>
-                        <input type="date" id='dateFa' name='father-date-of-birth'/>
+                        <input type="date" id='dateFa' name='father-date-of-birth' />
                     </section>
 
                     <section className="national">
