@@ -1,103 +1,106 @@
 import './form.css'
 // eslint-disable-next-line no-unused-vars
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Form() {
-    
+
     function open() {
-        let sel = document.getElementById("national");
-        if (sel.value === "مقيم") {
+        if(document.getElementById('nationalFa').value === "مقيم") {
             document.getElementById("other").style.display = "block"
-            console.log(document.getElementById("date").value)
         } else {
             document.getElementById("other").style.display = "none"
         }
-
     }
+
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwIOafGNb08HrIshQqCr7br80BDXMIN3nZm8jHFF4mFgwEPx0ANJntsfWJFNYqGEh9YCw/exec'
+
+    const form = document.forms['contact-form']
+
+    function submit(e) {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    }
+
+
+
+
+
     return (
-        <section className="form">
+        <section className="form" >
             <section className="container">
-                <form>
+                <form name='contact-form' onSubmit={(e)=>{submit(e)}}>
                     <h1 className='form-section-title'>المعلومات الدراسية</h1>
                     <section>
-                        <label htmlFor="Semester">السنة الدراسية المراد التسجيل بها للعام الدراسي الجديد 2024 - 2025</label>
-                        <select id='Semester'>
-                            <option value="">الصف الأول الابتدائي</option>
-                            <option value="">الصف الثاني الابتدائي</option>
-                            <option value="">الصف الثالث الابتدائي</option>
-                            <option value="">الصف الرابع الابتدائي</option>
-                            <option value="">الصف الخامس الابتدائي</option>
-                            <option value="">الصف السادس الابتدائي</option>
-                            <option value="">الصف الأول المتوسط</option>
-                            <option value="">الصف الثاني المتوسط</option>
-                            <option value="">الصف الثالث المتوسط</option>
-                            <option value="">الصف الأول الثانوي</option>
-                            <option value="">الصف الثاني الثانوي</option>
-                            <option value="">الصف الثالث الثانوي</option>
+                        <label htmlFor="semester">السنة الدراسية المراد التسجيل بها للعام الدراسي الجديد 2024 - 2025</label>
+                        <select id='semester' name='semester'>
+                            <option value="" selected>الصف الدراسي ؟</option>
+                            <option value="الصف الأول الابتدائي">الصف الأول الابتدائي</option>
+                            <option value="الصف الثاني الابتدائي">الصف الثاني الابتدائي</option>
+                            <option value="الصف الثالث الابتدائي">الصف الثالث الابتدائي</option>
+                            <option value="الصف الرابع الابتدائي">الصف الرابع الابتدائي</option>
+                            <option value="الصف الخامس الابتدائي">الصف الخامس الابتدائي</option>
+                            <option value="الصف السادس الابتدائي">الصف السادس الابتدائي</option>
+                            <option value="الصف الأول المتوسط">الصف الأول المتوسط</option>
+                            <option value="الصف الثاني المتوسط">الصف الثاني المتوسط</option>
+                            <option value="الصف الثالث المتوسط">الصف الثالث المتوسط</option>
+                            <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+                            <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+                            <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
                         </select>
                     </section>
                     <h1 className='form-section-title'>بيانات الطالب</h1>
 
                     <section className="name">
-                        <label htmlFor="name">اسم الطالب</label>
-                        <input type="text" id='name' />
+                        <label htmlFor="nameStd">اسم الطالب</label>
+                        <input type="text" id='nameStd' name='student-name' />
                     </section>
 
                     <section className="date">
-                        <label htmlFor="date">تاريخ ميلاد</label>
-                        <input type="date" id='date' value={"2015-04-10"}/>
+                        <label htmlFor="dateStd">تاريخ ميلاد</label>
+                        <input type="date" id='dateStd' name='Student-date-of-birth'/>
                     </section>
 
                     <section className="national-id">
-                        <label htmlFor="nationalId">رقم الهوية الوطنية</label>
-                        <input type="text" id='nationalId' />
-                    </section>
-
-                    <section className="image-student">
-                        <label htmlFor="imageStudent">صورة شهادة الميلاد</label>
-                        <input type="file" id='imageStudent' />
+                        <label htmlFor="nationalIdStd">رقم السجل المدني</label>
+                        <input type="text" id='nationalIdStd' name='student-id-number' />
                     </section>
 
                     <h1 className='form-section-title'>بيانات ولي الأمر</h1>
 
                     <section className="name">
-                        <label htmlFor="name">الاسم</label>
-                        <input type="text" id='name' />
+                        <label htmlFor="nameFa">الاسم</label>
+                        <input type="text" id='nameFa' name='father-name' />
                     </section>
 
                     <section className="date">
                         <label htmlFor="dateFa">تاريخ ميلاد </label>
-                        <input type="date" id='dateFa' value={"1990-11-11"}/>
+                        <input type="date" id='dateFa' name='father-date-of-birth'/>
                     </section>
 
                     <section className="national">
-                        <label htmlFor="national">مواطن أم مقيم ؟</label>
-                        <select name="national" id="national" onChange={()=>{open()}}>
+                        <label htmlFor="nationalFa">مواطن أم مقيم ؟</label>
+                        <select name="residence-status" id="nationalFa" onChange={() => { open() }}>
                             <option value="" selected>مواطن أم مقيم ؟</option>
                             <option value="مواطن">مواطن</option>
                             <option value="مقيم">مقيم</option>
                         </select>
-                        <input type="text" id='other' placeholder='ماهي جنسيتك ؟' className='other' />
+                        <input type="text" id='other' name="nationality" placeholder='ماهي جنسيتك ؟' className='other' />
                     </section>
 
                     <section className="national-id">
-                        <label htmlFor="nationalId">رقم السجل المدني</label>
-                        <input type="text" id='nationalId' />
-                    </section>
-
-                    <section className="image">
-                        <label htmlFor="image">صورة الهوية الوطنية</label>
-                        <input type="file" id='image' />
+                        <label htmlFor="nationalIdFa">رقم السجل المدني</label>
+                        <input type="text" id='nationalIdFa' name='father-id-number' />
                     </section>
 
                     <section className="job">
                         <label htmlFor="job">الوظيفة</label>
-                        <input type="text" id='job' />
+                        <input type="text" id='job' name='father-job' />
                     </section>
 
                     <section className="number">
-                        <label htmlFor="job">رقم هاتف للتواصل (يوجد حساب واتساب)</label>
-                        <input type="text" id='job' />
+                        <label htmlFor="number">رقم هاتف للتواصل (يوجد حساب واتساب)</label>
+                        <input type="number" id='number' name='father-phone-number' />
                     </section>
 
                     <button>إرسال البيانات</button>

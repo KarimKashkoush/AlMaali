@@ -28,14 +28,24 @@
 }
 
 .form .container form input,
-select {
+.form .container form select {
     width: 100%;
+    max-width: 450px;
     padding: 7px 15px;
     outline: none;
     border: 1px solid var(--subtitle);
     border-radius: 5px;
+
 }
 
+.form .container form option:nth-child(1) {
+    background-color: var(--main-text);
+    color: #fff;
+}
+
+#dateStd {
+    min-width: 250px;
+}
 .form .container form button {
     margin-top: 35px;
     width: 100%;
